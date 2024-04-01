@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Employees report</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<style type="text/css">
+	img{
+		width: 10px;
+		height: 10px;
+	}
+	</style>
+</head>
+<body class="container">
+	<h1 style="color: red; text-align: center;">Employees report</h1>
+	<hr color="blue">
+	<br>
+	<div th:if="${employeeList != null}" align="center">
+		<table class="table-bordered table-hover">
+			<thead>
+				<tr align="left" class="table-danger">
+					<th>Employee id</th>
+					<th>Name</th>
+					<th>Mobile no.</th>
+					<th>Email</th>
+					<th>Address</th>
+					<th>Hire-date</th>
+					<th>Designation</th>
+					<th>Salary</th>
+					<th>Update</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employee : ${employeeList}" align="left" class="table-success">
+					<td th:text="${employee.id}"></td>
+					<td th:text="${employee.name}"></td>
+					<td th:text="${employee.mobile}"></td>
+					<td th:text="${employee.email}"></td>
+					<td th:text="${employee.address}"></td>
+					<td th:text="${employee.hireDate}"></td>
+					<td th:text="${employee.designation}"></td>
+					<td th:text="${employee.salary}"></td>
+					<td><a th:href="'edit-employee?id='+${employee.id}"><img src="images/edit.gif">edit</a></td>
+					<td><a th:onclick="'return confirm(`Are you sure to fire the employee : '+${employee.id}+'`)'" th:href="'delete-employee?id='+${employee.id}"><img src="images/delete.png">delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+		<h2 th:text="${message}" style="color: purple; text-align: center;"></h2>
+	</div>
+	<div th:unless="${employeeList != null}">
+		<h2 style="color: limegreen; text-align: center;">No records found...!</h2>
+	</div>
+	<br>
+	<hr color="blue">
+	<h2 style="color: purple; text-align: center;"><a href="hire-employee"><img src="images/add.png" width="25px" height="25px">Hire employee</a></h2>
+	<br>
+	<h2 style="color: purple; text-align: center;"><a href="./"><img src="images/home.png" width="30px" height="30px">Go to home</a></h2>
+</body>
+</html>

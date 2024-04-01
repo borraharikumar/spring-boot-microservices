@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Edit employee</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<style type="text/css">
+		span{
+			color: rgb(218, 3, 24);
+		}
+	</style>
+	<script type="text/javascript" th:src="@{/js/validations.js}"></script>
+</head>
+	<noscript>
+		<h1 style="color: aqua; text-align: left;">Enable java-script in your browser</h1>
+	</noscript>
+<body class="container">
+	<h1 style="color: red; text-align: center;">Edit employee</h1>
+	<hr color="blue">
+	<br>
+	<div align="center">
+	<div style="border: 2px solid green; background: #e0e0e0;" align="center">
+	
+		<form method="post" th:object="${employee}" onsubmit="return validate()" name="employee">
+			<table class="table">
+				<tr>
+					<td>Employee id</td>
+					<td>
+						<input type="text" th:value="${employee.id}" disabled name="id" id="id">
+					</td>
+				</tr>
+				<tr>
+					<td>Name</td>
+					<td>
+						<input type="text" th:value="${employee.name}" name="name" id="name">
+						<br>
+						<span th:errors="*{name}"></span>
+						<span id="nameErr"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Mobile</td>
+					<td>
+						<input type="tel" th:value="${employee.mobile}" name="mobile" id="mobile">
+						<br>
+						<span th:errors="*{mobile}"></span>
+						<span id="mobileErr"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Email</td>
+					<td>
+						<input type="email" th:value="${employee.email}" name="email" id="email">
+						<br>
+						<span th:errors="*{email}"></span>
+						<span id="emailErr"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Address</td>
+					<td>
+						<input type="text" th:value="${employee.address}" name="address" id="address">
+						<br>
+						<span th:errors="*{address}"></span>
+						<span id="addressErr"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Hire-date</td>
+					<td>
+						<input type="date" th:value="${employee.hireDate}" name="hireDate" id="hirDate">
+						<br>
+						<span th:errors="*{hireDate}"></span>
+						<span id="hireDareErr"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Designation</td>
+					<td>
+						<input type="text" th:value="${employee.designation}" name="designation" id="designation">
+						<br>
+						<span th:errors="*{designation}"></span>
+						<span id="designationErr"></span>
+					</td>
+				</tr>
+				<tr>
+					<td>Salary</td>
+					<td>
+						<input type="text" th:value="${employee.salary}" name="salary" id="salary">
+						<br>
+						<span th:errors="*{salary}"></span>
+						<span id="salaryErr"></span>
+					</td>
+				</tr>
+				<tr align="center">
+					<td colspan="2"><input type="submit" value="Submit"></td>
+				</tr>
+			</table>
+		</form>
+		
+	</div>
+	</div>
+	<br>
+	<hr color="blue">
+	<h2 style="color: purple; text-align: center;"><a href="./"><img src="images/add.png" width="25px" height="25px">Go to home</a></h2>
+</body>
+</html>
